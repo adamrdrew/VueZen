@@ -1,11 +1,7 @@
 #delete
-res/wgt/app.js
-res/wgt/lowBatteryCheck.js
 #add
-res/wgt/js/
-res/wgt/js/hardware_handlers.js
-res/wgt/lib/lowBatteryCheck.js
 #modify
 res/wgt/author-signature.xml
 res/wgt/signature1.xml
-res/wgt/index.html
+res/wgt/js/vue_app.js
+res/wgt/lib/vue/vuex.min.js
