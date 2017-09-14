@@ -1,31 +1,13 @@
+// This file is the central Vue stack bootstrap code
+// You will need to update this file in order to register
+// new page components with the router, or when you want
+// to make data model changes by extending the store
 
-var pageOne = {
-	template: "	<div class='ui-page ui-page-active'>\
-					<header class='ui-header'>\
-						<h2 class='ui-title'>Page 1</h2>\
-					</header>\
-					<div class='ui-content content-padding'>\
-						<p>Hello Page 1!</p><p> Vuex Init: {{vuex_init}} </p><router-link to='/two'>Two</router-link>\
-					</div>\
-				</div>",
-	computed: {
-		vuex_init: function() {
-			return this.$store.getters.init;
-		}
-	}
-};
 
-var pageTwo = {
-		template: "	<div class='ui-page ui-page-active'>\
-						<header class='ui-header'>\
-							<h2 class='ui-title'>Page 2</h2>\
-						</header>\
-						<div class='ui-content content-padding'>\
-							<p>Hello Page 2!</p><router-link to='/one'>One</router-link>\
-						</div>\
-					</div>"
-};
-
+// Vuex global application store and state manager
+// See https://vuex.vuejs.org/en/intro.html for more info
+// This global store ensures that all of your app pages can
+// share data, but in a controlled and safe way
 const __VueZenStore = new Vuex.Store({
 	state: {
 		list: [],
@@ -40,12 +22,19 @@ const __VueZenStore = new Vuex.Store({
 	}
 });
 
+// VueRouter page to route manager
+// Allows for multi-view apps with easy view transitions and back button integration
+// See https://router.vuejs.org/en/ for more information
+// When you add new page components you need to add them here
 const __VueZenRouter = new VueRouter({routes: [		
      {path: '/one', component: pageOne},
      {path: '/two', component: pageTwo},
      {path: '*', redirect: '/one'}
 ]});
 
+// The top level Vue app. Mounted to #app-mount
+// integrates with VueRouter and Vuex, allowing all
+// child page components to share them
 const __VueZenApp = new Vue({
 	el: "#app-mount",
 	store: __VueZenStore,

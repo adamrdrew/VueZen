@@ -3,14 +3,26 @@
 <head>
 	<meta name="viewport" content="width=device-width,user-scalable=no">
 	<title>VueZen App</title>
+	
+	<!-- Tau Resources -->
 	<link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
 	<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
 	<script src="js/hardware_handlers.js"></script>
+	
+	<!-- Vue Stack -->
 	<script src="lib/vue/vue.min.js"></script>
 	<script src="lib/vue/vuex.min.js"></script>
 	<script src="lib/vue/vue-router.min.js"></script>
+	
+	<!-- Page Components -->
+	<!-- Make sure to include your new components here -->
+	<script src="components/page_one.js"></script>
+	<script src="components/page_two.js"></script>
+	
+	<!-- Custom Styles -->
 	<link rel="stylesheet" href="css/style.css">
 </head>
+<!-- Vue App setup. Do not change anything from here down. -->
 <body>
 	<div id="app-mount">
 		<router-view></router-view>
