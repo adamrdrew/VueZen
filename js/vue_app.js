@@ -11,7 +11,11 @@
 const __VueZenStore = new Vuex.Store({
 	state: {
 		list: [],
-		vuex_init: true
+		vuex_init: true,
+		persistence: {
+			directory: "documents",
+			name: "vue_zen.json"
+		}
 	},
 	getters: {
 		list_length: function(state) {return state.list.count;},
@@ -23,7 +27,7 @@ const __VueZenStore = new Vuex.Store({
 });
 
 // VueRouter page to route manager
-// Allows for multi-view apps with easy view transitions and back button integration
+// Allows for multi-page apps with easy view transitions and back button integration
 // See https://router.vuejs.org/en/ for more information
 // When you add new page components you need to add them here
 const __VueZenRouter = new VueRouter({routes: [		
@@ -32,12 +36,21 @@ const __VueZenRouter = new VueRouter({routes: [
      {path: '*', redirect: '/one'}
 ]});
 
-// The top level Vue app. Mounted to #app-mount
+// The top level Vue app. Mounted to #app-mount in index.html
 // integrates with VueRouter and Vuex, allowing all
 // child page components to share them
+// See https://vuejs.org/v2/guide/ for more info
 const __VueZenApp = new Vue({
 	el: "#app-mount",
 	store: __VueZenStore,
-	router: __VueZenRouter
+	router: __VueZenRouter,
+	methods: {
+		loadStateFile: function() {
+			//TODO: Load the vuex state from a file
+		},
+		saveStateFile: function() {
+			//TODO: Save the vuex state from a file
+		}
+	}
 });
 

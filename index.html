@@ -25,7 +25,7 @@
 <!-- Vue App setup. Do not change anything from here down. -->
 <body>
 	<div id="app-mount">
-		<router-view></router-view>
+		<router-view v-on:save="saveStateFile" v-on:load="loadStateFile"></router-view>
 	</div>
 	<script src="js/vue_app.js"></script>
 </body>
