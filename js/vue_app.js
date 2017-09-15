@@ -1,4 +1,4 @@
-// This file is the central Vue stack bootstrap code
+// This file is the central Vue stack code
 // You will need to update this file in order to register
 // new page components with the router, or when you want
 // to make data model changes by extending the store
@@ -40,6 +40,7 @@ const __VueZenRouter = new VueRouter({routes: [
 // integrates with VueRouter and Vuex, allowing all
 // child page components to share them
 // See https://vuejs.org/v2/guide/ for more info
+// Also handles top level events available to all pages
 const __VueZenApp = new Vue({
 	el: "#app-mount",
 	store: __VueZenStore,
