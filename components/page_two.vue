@@ -1,6 +1,7 @@
 <name>pageTwo</name>
 
 <template>
+<div>
     <div class='ui-page ui-page-active'>
         <header class='ui-header'>
             <h2 class='ui-title'>Page 2</h2>
@@ -16,6 +17,7 @@
             </ul>
         </div>
     </div>
+</div>
 </template>
 
 <script>

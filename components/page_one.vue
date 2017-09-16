@@ -1,6 +1,7 @@
 <name>pageOne</name>
 
 <template>
+<div>
 	<header class='ui-header'>
 		<h2 class='ui-title'>Page 1</h2>
 	</header>
@@ -13,6 +14,7 @@
 		</ul>
 		<p>{{ajax_response}}</p>
 	</div>
+</div>
 </template>
 
 <script>
