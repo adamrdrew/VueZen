@@ -1,0 +1,14 @@
+{
+  "name": "vuezen-compiler",
+  "version": "1.0.0",
+  "description": "VueZen component compiler",
+  "main": "bin/compiler.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Adam Drew",
+  "license": "MIT",
+  "dependencies": {
+    "tosource": "^1.0.0"
+  }
+}
