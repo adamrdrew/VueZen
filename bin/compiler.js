@@ -21,8 +21,8 @@ const Compiler = function() {
         var script   = this.extractFromTags({doc: sourceFile, start: this.delims.scriptStart, end: this.delims.scriptEnd});
         var name     = this.extractFromTags({doc: sourceFile, start: this.delims.nameStart, end: this.delims.nameEnd});
         var scriptObj = eval("(" + script + ")");
-        scriptObj.template = template;
-        script = "const " + name + " = " + this.removeBreaks(this.toSource(scriptObj)) + ";\n";
+        scriptObj.template = this.reduceWhiteSpace(template);
+        script = "const " + name + " = " + this.reduceWhiteSpace(this.toSource(scriptObj)) + ";\n";
         this.writeToOutputFile(script);
         console.log(name + ": compiled")
     }
@@ -56,8 +56,9 @@ const Compiler = function() {
         });
     }
 
-    this.removeBreaks = function(str) {
-        return str.replace(/(\r\n|\n|\r|\t)/gm," ");
+    this.reduceWhiteSpace = function(str) {
+        return str.replace(/\s+/g,' ');
+        //return str.replace(/(\r\n|\n|\r|\t)/gm," ");
     } 
 
     this.sourceIterator = function(callback) {
