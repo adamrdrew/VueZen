@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Overview version="1.0">
+  <SampleName>VueZen</SampleName>
+  <SampleVersion>1.0</SampleVersion>
+  <PlatformList>
+    <Profile>
+      <ProfileName>Wearable</ProfileName>
+      <RequiredVersion>2.3.2</RequiredVersion>
+    </Profile>
+  </PlatformList>
+  <ProjectType>TIZEN</ProjectType>
+  <HasOption>False</HasOption>
+  <CategoryList>
+    <Category>UI</Category>
+  </CategoryList>
+  <PreviewList>
+    <Preview>screenshot_circle.png</Preview>
+    <Preview>screenshot.png</Preview>
+  </PreviewList>
+  <IconSet>
+    <IconSmall>ic_s_vuezen.png</IconSmall>
+    <IconMediumNormal>ic_m_vuezen_n.png</IconMediumNormal>
+    <IconMediumSelect>ic_m_vuezen_s.png</IconMediumSelect>
+    <IconLarge>ic_l_vuezen.png</IconLarge>
+  </IconSet>
+  <Description>
+    VueZen template providing components, routing, state, and more.
+  </Description>
+</Overview>
