@@ -1,4 +1,3 @@
-
 const Compiler = function() {
     this.toSource = require('tosource');
     this.fs = require('fs');
@@ -29,10 +28,9 @@ const Compiler = function() {
 
     this.compile = function() {
         this.deleteOutputFile();
-        this.sourceIterator((fileName) => {
-            this.readSourceFile(fileName, (sourceFile) => {
-                this.createComponentString(sourceFile);
-            })
+    	this.sourceFileList().forEach((fileName, index) => {
+        	var sourceFile = this.readSourceFile(fileName);
+        	this.createComponentString(sourceFile);
         })
     }
 
@@ -50,30 +48,22 @@ const Compiler = function() {
         return opts.doc.substring(start, end);
     }
 
-    this.readSourceFile = function(sourceFileName, callback){
-        this.fs.readFile(this.componentDir+sourceFileName, this.encoding, (e, sourceFile) => {
-            callback(sourceFile);
-        });
+    this.readSourceFile = function(sourceFileName){
+        return this.fs.readFileSync(this.componentDir+sourceFileName, this.encoding)
     }
 
     this.reduceWhiteSpace = function(str) {
         return str.replace(/\s+/g,' ');
-        //return str.replace(/(\r\n|\n|\r|\t)/gm," ");
     } 
 
-    this.sourceIterator = function(callback) {
-        this.fs.readdir(this.componentDir, (err, fileList) => {
-            var sfcs = fileList.filter((f) => f.indexOf(".vue") > -1);
-            sfcs.forEach((fileName, index) => {
-                callback(fileName)
-            });
-        });
+    this.sourceFileList = function() {
+        fileList = this.fs.readdirSync(this.componentDir);
+        return fileList.filter((f) => f.indexOf(".vue") > -1);
     }
 
     this.writeToOutputFile = function(compiledString) {
-        this.fs.appendFile(this.compiledFile, compiledString, (e) => {
-            if (e) console.log("Error writing file: " + e);
-        });
+        result = this.fs.appendFileSync(this.compiledFile, compiledString)
+        if (result) console.log("Error writing file: " + e);
     } 
 }
 
