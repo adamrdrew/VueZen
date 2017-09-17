@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>VueZenTemplate</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -21,4 +20,15 @@
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 		<nature>org.tizen.web.project.builder.WebNature</nature>
 	</natures>
+	<filteredResources>
+		<filter>
+			<id>1505654250214</id>
+			<name></name>
+			<type>10</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-node_modules</arguments>
+			</matcher>
+		</filter>
+	</filteredResources>
 </projectDescription>

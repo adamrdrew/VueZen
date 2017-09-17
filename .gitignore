@@ -4,6 +4,5 @@
 .rds_delta
 components/compiled.js
 node_modules/
-.project
 .tproject
 .settings/
