@@ -1,6 +1,4 @@
-( function () {
-	//Add any custom init code here
-	
+( function () {	
 	//Back button event handler
 	window.addEventListener( 'tizenhwkey', function( ev ) {
 		if( ev.keyName === "back" ) {
