@@ -1,3 +1,5 @@
+<p align="center"><a href="https://vuejs.org" target="_blank"><img width="150"src="https://user-images.githubusercontent.com/6499014/30522645-9ab8063a-9ba1-11e7-8a4c-f796f4b60450.png"></a></p>
+
 # VueZen 
 VueZen brings the power and simplicity of the VueJS stack to Tizen. With VueZen you can develop Tizen apps composed of reactive Vue components while retaining the native look and feel of Tau UI elements. Additionally, VueZen provides a small library of helpful Javascript classes that make it easier to work with the Tizen web app framework as well a simplified Vue SFC compiler. VueZen comes packaged as a project template for Tizen Studio so you can easily create your own VueZen powered apps.
 
