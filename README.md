@@ -15,13 +15,49 @@ VueZen brings the power and simplicity of the VueJS stack to Tizen. With VueZen 
 * Tizen Studio
 * Tizen Wearable 2.3.2
 
-***Note**:* *VueZen currently supports Tizen wearable 2.3.2 and is distributed as a Wearable Web 2.3.2 Tizen Studio project template. The VueZen code should work fine on other versions of Tizen with little modification, but the project template is tied to 2.3.2.*
+***Note***: *VueZen currently supports Tizen wearable 2.3.2 and is distributed as a Wearable Web 2.3.2 Tizen Studio project template. The VueZen code should work fine on other versions of Tizen with little modification, but the project template is tied to 2.3.2.*
 
 # Installation
 1. Locate the Tizen Studio template directory on your system. For example, if you installed Tizen Studio to `/tizen-studio` the directory would be `/tizen-studio/platforms/tizen-2.3.2/wearable/samples/Template/Web`
 2. Clone this repo into that directory
-3. Go into the project directory and install dependencies `npm install`
-4. When you open Tizen Studio next VueZen will be available as a template for Wearable Web 2.3.2
+
+# Creating New VueZen Projects
+After installing the template you will be able to create VueZen projects from within Eclipse.
+
+1. File -> New -> Tizen Project
+2. Template
+3. Wearable 2.3.2
+4. Web
+5. VueZen
+
+After creating the project you will need to perform some tasks at the command line in order to complete the VueZen environment setup.
+
+1. Go the project directory for your new project. It will be in your workspace directory.
+2. Install dependencies: 
+     - `$ npm install`
+3. Compile the components: 
+    - `$ grunt vuecompile`
+4. Modify the Ecplipse project: 
+    - `$ grunt project_filter`
+5. If your project is already open in Eclipse right-click it in the *Project Browser* and click *Refresh*
+
+***Note:*** *Step 4 adds a file filter to the Ecplipse project file to ignore the node_modules diretory. Without this step the Tizen project will fail to build and launch because Eclipse will attempt to include everything in node_modules. Editing Eclipse project files outside of Eclipse can be risky, so you can always skip step 4 and do it yourself via the following steps:*
+
+### Optional Steps if you don't run the project_filter task
+1. Make sure you read the above note and don't blindly follow these steps because you are in learning mode and you see an ordered list
+2. In the `Project Explorer` right click the project
+3. Click `Properties`
+4. Expand `Resources`
+5. Click `Resource Filters`
+6. Click `Add Filter`
+7. Set these properties:
+    - Filter Type: Exclude All
+    - Applies to: Folders
+    - File and Folder Attributes
+    - Filter Details:
+        - Name
+        - Matches
+        - node_modules
 
 # Project Structure
 * `components/` VueJS component directory
@@ -32,6 +68,7 @@ VueZen brings the power and simplicity of the VueJS stack to Tizen. With VueZen 
 * `lib/` Vue, Tau, and VueZen library files
 * `lib/vuezen.js` VueZen helper classes
 * `tasks/compiler.js` VueJS SFC compiler grunt task
+* `tasks/project_filter.js` Ecplipse project settings grunt task
 * `config.xml` Tizen application config
 * `Gruntfile.js` Grunt config
 * `icon.png` Your app's icon
