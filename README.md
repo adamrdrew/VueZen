@@ -11,6 +11,7 @@ VueZen brings the power and simplicity of the VueJS stack to Tizen. With VueZen 
 
 # Requirements
 * NodeJS
+* Grunt
 * Tizen Studio
 * Tizen Wearable 2.3.2
 
@@ -19,5 +20,20 @@ VueZen brings the power and simplicity of the VueJS stack to Tizen. With VueZen 
 # Installation
 1. Locate the Tizen Studio template directory on your system. For example, if you installed Tizen Studio to `/tizen-studio` the directory would be `/tizen-studio/platforms/tizen-2.3.2/wearable/samples/Template/Web`
 2. Clone this repo into that directory
-3. Go into the project directory and run npm install to pull in the node module dependencies for the SFC compiler
-4. When you open Tizen Studio next VueZen will be available as a template for Wearable Web 2.3.2 
+3. Go into the project directory and install dependencies `npm install`
+4. When you open Tizen Studio next VueZen will be available as a template for Wearable Web 2.3.2
+
+# Project Structure
+* `components/` VueJS component directory
+* `components/compiled.js` Components are compiled into this js file
+* `css/style.css` CSS file for your own styles
+* `js/hardware_handlers.js` Sets up low battery and back button support
+* `js/vue_app.js` Sets up the Vue stack and bootstraps the app
+* `lib/` Vue, Tau, and VueZen library files
+* `lib/vuezen.js` VueZen helper classes
+* `tasks/compiler.js` VueJS SFC compiler grunt task
+* `config.xml` Tizen application config
+* `Gruntfile.js` Grunt config
+* `icon.png` Your app's icon
+* `index.html` App entry point and includes
+* `package.json` NPM package file
