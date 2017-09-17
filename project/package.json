@@ -9,7 +9,8 @@
   "author": "Adam Drew",
   "license": "MIT",
   "dependencies": {
-    "tosource": "^1.0.0"
+    "tosource": "^1.0.0",
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "grunt": "^1.0.1"
