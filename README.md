@@ -74,3 +74,5 @@ After creating the project you will need to perform some tasks at the command li
 * `icon.png` Your app's icon
 * `index.html` App entry point and includes
 * `package.json` NPM package file
+
+# Components
