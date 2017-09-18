@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-	grunt.registerTask("project_filter", function(){
+	grunt.registerTask("project_filter", "Adds a filter to the Eclipse project file that ignores the node_modules directory", function(){
 		
 		var done = this.async();
 		
