@@ -1,6 +1,5 @@
 module.exports = function(grunt) {
 	grunt.registerTask('add_vue', "Generates a new Vue component and adds it to the project", function(componentName, isTopLevel, isDefault){
-		
 		var ComponentGenerator = function(componentName, isTopLevel, isDefault) {
 			this.name       = componentName;
 			this.isTopLevel = isTopLevel;
