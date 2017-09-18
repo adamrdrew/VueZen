@@ -40,6 +40,11 @@ const __VueZenApp = new Vue({
 	el: "#app-mount",
 	store: __VueZenStore,
 	router: __VueZenRouter,
+	data: function() {
+		return {
+			backButtonHandler: {}
+		}
+	},
 	methods: {
 		loadStateFile: function() {
 			//TODO: Load the vuex state from a file
@@ -47,6 +52,9 @@ const __VueZenApp = new Vue({
 		saveStateFile: function() {
 			//TODO: Save the vuex state from a file
 		}
+	},
+	mounted: function() {
+		this.backButtonHandler = new VueZen.BackButtonHandler(this.$router);
 	}
 });
 

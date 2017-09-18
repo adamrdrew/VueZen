@@ -140,6 +140,25 @@ VueZen =  {
 		}
 		
 		
+	},
+	BackButtonHandler: function(router) {
+		this.eventName  = "tizenhwkey";
+		this.buttonName = "back";
+		this.router     = router;
+		
+		this.eventHandler = function(event) {
+			if (event.keyName != this.buttonName) return;
+			var shouldExit = this.router.currentRoute.meta.isDefault;
+			if (shouldExit) {
+				try {
+					tizen.application.getCurrentApplication().exit();
+				} catch(ignore) {}
+			} else {
+				this.router.go(-1);
+			}
+		}
+		
+		window.addEventListener(this.eventName, this.eventHandler.bind(this));	
 	}
 	
 };
