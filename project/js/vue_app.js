@@ -13,7 +13,7 @@ const __VueZenStore = new Vuex.Store({
 		list: [],
 		vuex_init: true,
 		persistence: {
-			directory: "documents",
+			directory: "wgt-private",
 			name: "vue_zen.json"
 		}
 	},
@@ -29,12 +29,7 @@ const __VueZenStore = new Vuex.Store({
 // VueRouter page to route manager
 // Allows for multi-page apps with easy view transitions and back button integration
 // See https://router.vuejs.org/en/ for more information
-// When you add new page components you need to add them here
-const __VueZenRouter = new VueRouter({routes: [		
-     {path: '/one', component: pageOne},
-     {path: '/two', component: pageTwo},
-     {path: '*', redirect: '/one'}
-]});
+const __VueZenRouter = new VueRouter({routes: __VueZenRoutes});
 
 // The top level Vue app. Mounted to #app-mount in index.html
 // integrates with VueRouter and Vuex, allowing all
