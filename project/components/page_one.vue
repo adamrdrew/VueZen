@@ -1,4 +1,6 @@
 <name>pageOne</name>
+<top-level>true</top-level>
+<default>true</default>
 
 <template>
 <div>
@@ -9,7 +11,7 @@
 		<ul class='ui-listview'>
 			<li>Hello Page 1!</li>
 			<li>Vuex Init: {{vuex_init}}</li>
-			<li><router-link to='/two'>Two</router-link></li>
+			<li><router-link to='/pageTwo'>Two</router-link></li>
 			<li v-on:click='ajax'>AJAX</li>
 		</ul>
 		<p>{{ajax_response}}</p>

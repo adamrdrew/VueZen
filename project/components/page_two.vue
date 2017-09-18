@@ -1,4 +1,7 @@
 <name>pageTwo</name>
+<top-level>true</top-level>
+<default>true</default>
+
 
 <template>
 <div>
@@ -9,7 +12,8 @@
         <div class='ui-content content-padding'>
             <ul class='ui-listview'>
                 <li><p>Hello Page 2!</p></li>
-                <li><router-link to='/one'>One</router-link></li>
+                <li><router-link to='/pageOne'>One</router-link></li>
+                <li><router-link to='/newPage'>Three</router-link></li>
                 <li v-on:click='saveFile'>Save File</li>
                 <li v-on:click='loadFile'>Load File</li>
                 <li>Loading: {{loading}}</li>
