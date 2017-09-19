@@ -8,8 +8,7 @@ VueZen brings the power and simplicity of the VueJS stack to Tizen. With VueZen 
 * [VueX](https://vuex.vuejs.org/) state manager
 * [Vue-Router](https://github.com/vuejs/vue-router) page routing with hardware back-button integration
 * Vue Single File Component (SFC) compiler
-* VueZen.Ajax simple $.ajax() replacement
-* VueZen.FileManager simplified high level Tizen file IO
+* High level hwardware and device management library
 
 # Requirements
 * [NodeJS](https://nodejs.org/en/)
@@ -63,22 +62,11 @@ After creating the project you will need to perform some tasks at the command li
 
 # Project Structure
 * `components/` VueJS component directory
-* `components/compiled.js` Components are compiled into this js file
 * `css/style.css` CSS file for your own styles
-* `js/hardware_handlers.js` Sets up low battery and back button support
-* `js/vue_app.js` Sets up the Vue stack and bootstraps the app
-* `js/routes.js` Route configuration
+* `js/` App code
 * `lib/` Vue, Tau, and VueZen library files
-* `lib/vuezen.js` VueZen helper classes
-* `lib/template.vue` Component template
-* `tasks/add_vue.js` Component generator task
-* `tasks/compiler.js` VueJS SFC compiler grunt task
-* `tasks/project_filter.js` Ecplipse project settings grunt task
-* `config.xml` Tizen application config
-* `Gruntfile.js` Grunt config
-* `icon.png` Your app's icon
+* `tasks/` Grunt tasks
 * `index.html` App entry point and includes
-* `package.json` NPM package file
 
 # Components
 Components are the building blocks of VueZen apps. They encapsulate presentation, state, and logic into individual logical units. Components are reactive, allowing UI elements to be bound to data, thus eliminating manual DOM manipulation. VueZen's component system is powered by VueJS. It is recomended that you have asolid understanding of VueJS before jumping into VueZen.
