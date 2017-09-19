@@ -145,20 +145,53 @@ VueZen =  {
 		this.eventName  = "tizenhwkey";
 		this.buttonName = "back";
 		this.router     = router;
+		this.tizen		= new VueZen.TizenSystem();
 		
 		this.eventHandler = function(event) {
 			if (event.keyName != this.buttonName) return;
 			var shouldExit = this.router.currentRoute.meta.isDefault;
 			if (shouldExit) {
-				try {
-					tizen.application.getCurrentApplication().exit();
-				} catch(ignore) {}
+				this.tizen.closeApp();
 			} else {
 				this.router.go(-1);
 			}
 		}
-		
 		window.addEventListener(this.eventName, this.eventHandler.bind(this));	
+	},
+	TizenSystem: function() {
+		this.available = (typeof tizen === 'object' && typeof tizen.systeminfo === 'object');
+		if (!this.available) return;
+		this.systemInfo = tizen.systeminfo;
+		
+		this.handler = function(method) {
+			if (!this.available) {
+				this.tizenError("Unknown environment.")
+				return;
+			}
+			try { method() }
+			catch (e) { this.tizenError(e); }
+		}
+		
+		this.closeApp = function() {
+			this.handler(function() { tizen.application.getCurrentApplication().exit() });
+		}
+		
+		this.watchProperty = function(prop, callback) {
+			this.handler(function() { this.systeminfo.addPropertyChangeListener(prop, callback, this.tizenError) });
+		}
+		
+		this.tizenError = function(e) {
+			console.log("Tizen System Error: " + e);
+		}
+		
+	},
+	BatteryMonitor: function() {
+		this.lowBatLevel    = 0.04;
+		this.batteryProp 	= 'BATTERY';
+		this.tizen 			= new VueZen.TizenSystem(); 
+		this.tizen.watchProperty(this.batteryProp, function(battery){
+			if (battery.level > this.lowBatLevel) return;
+			if (!battery.isCharging) this.tizen.closeApp();
+		}.bind(this));
 	}
-	
 };

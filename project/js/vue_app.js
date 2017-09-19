@@ -42,7 +42,8 @@ const __VueZenApp = new Vue({
 	router: __VueZenRouter,
 	data: function() {
 		return {
-			backButtonHandler: {}
+			backButtonHandler: {},
+			batteryMonitor: new VueZen.BatteryMonitor()
 		}
 	},
 	methods: {
