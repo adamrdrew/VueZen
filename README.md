@@ -62,7 +62,7 @@ After creating the project you will need to perform some tasks at the command li
 
 # Project Structure
 * `components/` VueJS component directory
-* `css/style.css` CSS file for your own styles
+* `css/` CSS file for your own styles
 * `js/` App code
 * `lib/` Vue, Tau, and VueZen library files
 * `tasks/` Grunt tasks
