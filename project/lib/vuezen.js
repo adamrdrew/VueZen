@@ -159,15 +159,25 @@ VueZen =  {
 		window.addEventListener(this.eventName, this.eventHandler.bind(this));	
 	},
 	TizenSystem: function() {
-		this.available = (typeof tizen === 'object' && typeof tizen.systeminfo === 'object');
-		if (!this.available) return;
+		//https://developer.tizen.org/development/api-references/web-application?redirect=https://developer.tizen.org/dev-guide/2.3.1/org.tizen.web.apireference/html/device_api/mobile/tizen/systeminfo.html#SystemInfoPropertyId
 		this.systemInfo = tizen.systeminfo;
+		this.systemInfoProperties = {
+				battery: "BATTERY", 
+				cpu: "CPU", 
+				storage: "STORAGE", 
+				display:"DISPLAY", 
+				orientation: "DEVICE_ORIENTATION", 
+				build: "BUILD", 
+				locale: "LOCALE", 
+				netowrk: "NETWORK", 
+				wifi: "WIFI_NETWORK", 
+				cellular: "CELLULAR_NETWORK", 
+				sim: "SIM", 
+				peripheral: "PERIPHERAL", 
+				memory: "MEMORY"
+		}
 		
 		this.handler = function(method) {
-			if (!this.available) {
-				this.tizenError("Unknown environment.")
-				return;
-			}
 			try { method() }
 			catch (e) { this.tizenError(e); }
 		}
@@ -176,8 +186,8 @@ VueZen =  {
 			this.handler(function() { tizen.application.getCurrentApplication().exit() });
 		}
 		
-		this.watchProperty = function(prop, callback) {
-			this.handler(function() { this.systeminfo.addPropertyChangeListener(prop, callback, this.tizenError) });
+		this.watchProperty = function(prop, callback, opts) {
+			this.systemInfo.addPropertyValueChangeListener(prop, callback, opts);
 		}
 		
 		this.tizenError = function(e) {
@@ -186,12 +196,14 @@ VueZen =  {
 		
 	},
 	BatteryMonitor: function() {
-		this.lowBatLevel    = 0.04;
-		this.batteryProp 	= 'BATTERY';
-		this.tizen 			= new VueZen.TizenSystem(); 
-		this.tizen.watchProperty(this.batteryProp, function(battery){
+		this.startMonitoring = 0.2;
+		this.exitApp		 = 0.1
+		this.tizen			 = new VueZen.TizenSystem();
+		
+		this.tizen.watchProperty("BATTERY", function(battery){
 			if (battery.level > this.lowBatLevel) return;
 			if (!battery.isCharging) this.tizen.closeApp();
-		}.bind(this));
+		}.bind(this),{lowThreshold: this.startMonitoring})
+		
 	}
 };
