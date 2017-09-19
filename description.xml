@@ -14,14 +14,14 @@
     <Category>UI</Category>
   </CategoryList>
   <PreviewList>
-    <Preview>screenshot_circle.png</Preview>
-    <Preview>screenshot.png</Preview>
+    <Preview>images/screenshot_circle.png</Preview>
+    <Preview>images/screenshot.png</Preview>
   </PreviewList>
   <IconSet>
-    <IconSmall>ic_s_vuezen.png</IconSmall>
-    <IconMediumNormal>ic_m_vuezen_n.png</IconMediumNormal>
-    <IconMediumSelect>ic_m_vuezen_s.png</IconMediumSelect>
-    <IconLarge>ic_l_vuezen.png</IconLarge>
+    <IconSmall>images/ic_s_vuezen.png</IconSmall>
+    <IconMediumNormal>images/ic_m_vuezen_n.png</IconMediumNormal>
+    <IconMediumSelect>images/ic_m_vuezen_s.png</IconMediumSelect>
+    <IconLarge>images/ic_l_vuezen.png</IconLarge>
   </IconSet>
   <Description>
     VueZen template providing components, routing, state, and more.
