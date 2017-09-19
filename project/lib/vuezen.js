@@ -5,11 +5,6 @@
 VueZen =  {
 		
 	Ajax: function(opts) {
-		//VueZen.Ajax provides a replacement for jQuery's ajax method.
-		//Because we're using Vue and Tau there's really no point to including
-		//jQuery. That said, we do need web API access. This method provides
-		//a subset of the most commonly used functions of jQuery's ajax.
-		//Unlike jQuery, the response is always an object
 		this.method 	= opts.method;
 		this.url 		= opts.url;
 		this.headers 	= opts.headers  || {};
@@ -53,11 +48,6 @@ VueZen =  {
 		this.xhr.send();	
 	},
 	FileManager: function(path) {
-		//VueZen.FileMananger provides a high level API for Tizen's file management classes
-		//Tizen's classes are fairly low level. The user has to manage all of the 
-		//nitty gritty of locating files and directories, opening, streaming, and closing them, etc
-		//Plus, the API is mostly async and requires prodigious callback chaining
-		//VueZen.FileManager hides all of that complexity
 		var path_array	= path.split("/");
 		this.dirName  	= path_array[0];
 		this.fileName 	= path_array[1];
@@ -139,7 +129,6 @@ VueZen =  {
 			callback(newFile);
 		}
 		
-		
 	},
 	BackButtonHandler: function(router) {
 		this.eventName  = "tizenhwkey";
@@ -203,5 +192,34 @@ VueZen =  {
 			if (battery.level > this.exitLevel) return;
 			if (!battery.isCharging) this.tizen.closeApp();
 		}.bind(this),{lowThreshold: this.watchLevel})
+	},
+	RotaryHandler: function(opts) {
+		this.eventName = "rotarydetent";
+		this.directionFactor = {
+				CW: 1,
+				CCW: -1
+		}
+		this.scrollSpeed = 30;
+		this.UIContent = 'ui-content';
+		
+		this.addListener = function(callback) {
+			window.addEventListener(this.eventName, callback.bind(this));
+		}
+		
+		this.directionOffset = function(direction) {
+			return this.directionFactor[direction] * this.scrollSpeed;
+		}
+		
+		this.initPageScroller = function() {
+			this.addListener(function(event){
+				var scrollAmount 		    = this.directionOffset(event.detail.direction);
+				var scrollableContent 	    = document.getElementsByClassName(this.UIContent)[0];
+				var currentPos              = scrollableContent.scrollTop;
+				scrollableContent.scrollTop = currentPos + scrollAmount;
+				
+			});
+			
+		}
+		
 	}
 };
