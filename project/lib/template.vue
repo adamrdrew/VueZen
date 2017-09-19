@@ -1,6 +1,6 @@
-<name>
-{{name}}
-</name>
+<name>{{name}}</name>
+<top-level>{{isTopLevel}}</top-level>
+<default>{{isDefault}}</default>
 
 <template>
 	<div>
@@ -26,11 +26,3 @@
 	}
 }
 </script>
-
-<top-level>
-{{isTopLevel}}
-</top-level>
-
-<default>
-{{isDefault}}
-</default>

@@ -195,15 +195,13 @@ VueZen =  {
 		}
 		
 	},
-	BatteryMonitor: function() {
-		this.startMonitoring = 0.2;
-		this.exitApp		 = 0.1
-		this.tizen			 = new VueZen.TizenSystem();
-		
+	BatteryMonitor: function(opts) {
+		this.watchLevel = opts.watchLevel;
+		this.exitLevel  = opts.exitLevel
+		this.tizen	    = new VueZen.TizenSystem();	
 		this.tizen.watchProperty("BATTERY", function(battery){
-			if (battery.level > this.lowBatLevel) return;
+			if (battery.level > this.exitLevel) return;
 			if (!battery.isCharging) this.tizen.closeApp();
-		}.bind(this),{lowThreshold: this.startMonitoring})
-		
+		}.bind(this),{lowThreshold: this.watchLevel})
 	}
 };

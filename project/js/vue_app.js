@@ -43,7 +43,7 @@ const __VueZenApp = new Vue({
 	data: function() {
 		return {
 			backButtonHandler: {},
-			batteryMonitor: new VueZen.BatteryMonitor()
+			batteryMonitor: new VueZen.BatteryMonitor({watchLevel: 0.2, exitLevel: 0.1})
 		}
 	},
 	methods: {
