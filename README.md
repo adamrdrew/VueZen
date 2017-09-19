@@ -8,7 +8,7 @@ VueZen brings the power and simplicity of the VueJS stack to Tizen. With VueZen 
 * [VueX](https://vuex.vuejs.org/) state manager
 * [Vue-Router](https://github.com/vuejs/vue-router) page routing with hardware back-button integration
 * Vue Single File Component (SFC) compiler
-* High level hwardware and device management library
+* VueZen helper library
 
 # Requirements
 * [NodeJS](https://nodejs.org/en/)
@@ -37,9 +37,9 @@ After creating the project you will need to perform some tasks at the command li
 2. Install dependencies: 
      - `$ npm install`
 3. Compile the components: 
-    - `$ grunt vuecompile`
+    - `$ grunt compile`
 4. Modify the Ecplipse project: 
-    - `$ grunt project_filter`
+    - `$ grunt modules`
 5. If your project is already open in Eclipse right-click it in the *Project Browser* and click *Refresh*
 
 ***Note:*** *Step 4 adds a file filter to the Ecplipse project file to ignore the node_modules diretory. Without this step the Tizen project will fail to build and launch because Eclipse will attempt to include everything in node_modules. Editing Eclipse project files outside of Eclipse can be risky, so you can always skip step 4 and do it yourself via the following steps:*
@@ -62,7 +62,7 @@ After creating the project you will need to perform some tasks at the command li
 
 # Project Structure
 * `components/` VueJS component directory
-* `css/` CSS file for your own styles
+* `css/` CSS files
 * `js/` App code
 * `lib/` Vue, Tau, and VueZen library files
 * `tasks/` Grunt tasks
@@ -72,7 +72,7 @@ After creating the project you will need to perform some tasks at the command li
 Components are the building blocks of VueZen apps. They encapsulate presentation, state, and logic into individual logical units. Components are reactive, allowing UI elements to be bound to data, thus eliminating manual DOM manipulation. VueZen's component system is powered by VueJS. It is recomended that you have asolid understanding of VueJS before jumping into VueZen.
 
 ### Component Generator
-To create a new component run the `add_vue` grunt task. This task requires 3 arguments:
+To create a new component run the `add` grunt task. This task requires 3 arguments:
 
 * Component name (String) : The name for your component. Name must be valid for Javascript symbols. 
 * Top Level (Boolean) : Defines whether the component should be tied into the routing system.
@@ -80,7 +80,7 @@ To create a new component run the `add_vue` grunt task. This task requires 3 arg
 
 The arguments are positional, and all three are required. Example:
 
-```$ grunt add_vue:pageOne:true:false```
+```$ grunt add:pageOne:true:false```
 
 That will create a new component: `components/pageOne.vue`. 
 
@@ -114,9 +114,9 @@ In the first alpha release of VueZen there are a number of shortcomings to VueZe
 - HTML and Javascript preprocessors are not supported
 
 ### Compilation
-The `vuecompile` grunt task compiles the component files into a single Javascript file that is included in your app. That means that whenever you make a change to your component files you must recompile the components before running the project:
+The `compile` grunt task compiles the component files into a single Javascript file that is included in your app. That means that whenever you make a change to your component files you must recompile the components before running the project:
 
-`$ grunt vuecompile`
+`$ grunt compile`
 
 # Router
 Tizen Web Apps are just that: web apps. As such, Tizen apps switch between pages via links, just like normal web pages. VueZen uses Vue Router to bind components to virtual routes. Thus, you'll enable navigation in your app using links between routes that map to components. However, rather than the familiar `<a href>` element to navigate between pages VueZen uses `<router-link to="componentName">` 
@@ -126,9 +126,9 @@ Routes are defined in the component files via the elements described above: `nam
 ### Example:
 
 ```
-$ grunt add_vue:pageOne:true:true
-$ grunt add_vue:pageTwo:true:false
-$ grunt add_vue:navList:false:false
+$ grunt add:pageOne:true:true
+$ grunt add:pageTwo:true:false
+$ grunt add:navList:false:false
 ```
 
 #### components/navList.vue

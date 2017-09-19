@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-	grunt.registerTask("vuecompile", "Compiles the Vue components into a single Javascript file", function() {
+	grunt.registerTask("compile", "Compiles the Vue components into a single Javascript file", function() {
 	
 		const Tag = function(tagName, source) {
 			this.name          = tagName;
