@@ -43,7 +43,8 @@ const __VueZenApp = new Vue({
 	data: function() {
 		return {
 			backButtonHandler: {},
-			batteryMonitor: new VueZen.BatteryMonitor({watchLevel: 0.2, exitLevel: 0.1})
+			batteryMonitor: new VueZen.BatteryMonitor({watchLevel: 0.2, exitLevel: 0.1}),
+			rotaryHandler:  new VueZen.RotaryHandler()
 		}
 	},
 	methods: {
@@ -56,6 +57,7 @@ const __VueZenApp = new Vue({
 	},
 	mounted: function() {
 		this.backButtonHandler = new VueZen.BackButtonHandler(this.$router);
+		this.rotaryHandler.initPageScroller();		
 	}
 });
 
